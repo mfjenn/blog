@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  
+  http_basic_authenticate_with :name => "dhh", :password => "secret", :except => [:index, :show]
+  
   # GET /posts
   # GET /posts.json
   def index
@@ -28,7 +31,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @post }
+      format.json { render :json => @post }
     end
   end
 
@@ -44,11 +47,11 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render json: @post, status: :created, location: @post }
+        format.html { redirect_to @post, :notice => 'Post was successfully created.' }
+        format.json { render :json => @post, :status => :created, :location => @post }
       else
-        format.html { render action: "new" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @post.errors, :status => :unprocessable_entity }
       end
     end
   end
