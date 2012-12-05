@@ -4,6 +4,7 @@ gem 'rails', '3.2.7'
 
 
 gem 'pjax_rails'
+gem 'turbolinks'
 
 
 # Bundle edge Rails instead:
